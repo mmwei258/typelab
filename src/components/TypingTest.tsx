@@ -65,13 +65,15 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Initialize and start test
-  const startTest = useCallback(() => {
+  const startTest = useCallback((dur?: number) => {
+    const d = dur ?? duration;
+    setDuration(d);
     const testWords = generateWords(lang, WORD_COUNT);
     setWords(testWords);
     setCurrentWordIndex(0);
     setCurrentInput("");
     setTypedHistory([]);
-    setTimeLeft(duration);
+    setTimeLeft(d);
     setResult(null);
     setTotalCorrectChars(0);
     setTotalIncorrectChars(0);
@@ -165,8 +167,8 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
-    startTest();
-  }, [startTest]);
+    startTest(duration);
+  }, [startTest, duration]);
 
   const handleShare = async () => {
     if (!result) return;
@@ -290,11 +292,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
               {TEST_DURATIONS.map((d) => (
                 <button
                   key={d}
-                  onClick={() => {
-                    setDuration(d);
-                    setTimeLeft(d);
-                    startTest();
-                  }}
+                  onClick={() => startTest(d)}
                   className="px-8 py-3 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-xl hover:bg-amber-500/20 transition-colors font-medium"
                 >
                   {d} sec test
