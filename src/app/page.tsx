@@ -51,7 +51,7 @@ export default function Home() {
             </div>
           ))}
 
-          <div className="mt-10 pt-8 border-t border-gray-800 text-center text-gray-700 text-xs">
+          <div className="mt-10 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs">
             TypeLab © {new Date().getFullYear()} ·
             <a href="/privacy" className="hover:text-gray-400 mx-1">
               Privacy

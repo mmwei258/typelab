@@ -211,7 +211,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
     const word = words[currentWordIndex] || "";
     if (testState !== "running") return null;
     return word.split("").map((char, i) => {
-      let cls = "text-gray-600";
+      let cls = "text-gray-500";
       if (i < currentInput.length) {
         cls =
           currentInput[i] === char
@@ -242,6 +242,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
         </a>
         <div className="flex items-center gap-3 flex-wrap">
           <select
+            aria-label="Test language"
             value={lang}
             onChange={(e) => {
               setLang(e.target.value);
@@ -364,7 +365,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
               spellCheck={false}
               aria-label="Type here"
             />
-            <div className="text-center mt-10 text-gray-700 text-xs">
+            <div className="text-center mt-10 text-gray-500 text-xs">
               <kbd className="px-2 py-0.5 bg-gray-800 rounded">tab</kbd> +{" "}
               <kbd className="px-2 py-0.5 bg-gray-800 rounded">enter</kbd>{" "}
               restart
