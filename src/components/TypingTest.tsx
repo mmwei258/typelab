@@ -60,6 +60,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
   const [totalCorrectChars, setTotalCorrectChars] = useState(0);
   const [totalIncorrectChars, setTotalIncorrectChars] = useState(0);
   const [totalKeystrokes, setTotalKeystrokes] = useState(0);
+  const [shareText, setShareText] = useState("Copy Result");
 
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -177,8 +178,26 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
       await navigator.clipboard.writeText(
         `${text} Try TypeLab: ${window.location.origin}`
       );
-    } catch { /* noop */ }
+      setShareText("Copied!");
+      setTimeout(() => setShareText("Copy Result"), 2000);
+    } catch {
+      setShareText("Failed");
+      setTimeout(() => setShareText("Copy Result"), 2000);
+    }
   };
+
+  // Keyboard shortcut: press any key to start test (monkeytype UX)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (testState !== "idle") return;
+      // Ignore modifier keys, function keys, and UI navigation
+      if (e.key === "Tab" || e.key === "Enter" || e.key === "Escape") return;
+      if (e.ctrlKey || e.altKey || e.metaKey) return;
+      startTest();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [testState, startTest]);
 
   useEffect(() => {
     return () => {
@@ -300,7 +319,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
               ))}
             </div>
             <p className="text-gray-600 text-sm mt-6">
-              or click anywhere and start typing
+              or press any key to start
             </p>
           </div>
         )}
@@ -393,7 +412,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
                 onClick={handleShare}
                 className="px-5 py-3 bg-gray-800 text-gray-300 rounded-xl hover:bg-gray-700 transition-colors border border-gray-700"
               >
-                Copy Result
+                {shareText}
               </button>
             </div>
           </div>
