@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* SEO / FAQ */}
       <footer className="border-t border-gray-800 px-6 py-16 max-w-3xl mx-auto w-full">
-        <section className="space-y-5 text-gray-400 text-sm leading-relaxed">
+        <section className="space-y-5 text-gray-300 text-sm leading-relaxed">
           <h2 className="text-white text-lg font-semibold">
             Free Online Typing Speed Test — Check Your WPM
           </h2>
@@ -47,11 +47,11 @@ export default function Home() {
           {FAQS.map((faq) => (
             <div key={faq.q}>
               <h4 className="text-gray-200 font-medium">{faq.q}</h4>
-              <p className="text-gray-500">{faq.a}</p>
+              <p className="text-gray-300">{faq.a}</p>
             </div>
           ))}
 
-          <div className="mt-10 pt-8 border-t border-gray-800 text-center text-gray-500 text-xs">
+          <div className="mt-10 pt-8 border-t border-gray-800 text-center text-gray-400 text-xs">
             TypeLab © {new Date().getFullYear()} ·
             <a href="/privacy" className="hover:text-gray-400 mx-1">
               Privacy
