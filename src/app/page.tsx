@@ -82,7 +82,7 @@ export default function Home() {
 
       {/* Ad placeholder */}
       <div className="max-w-3xl mx-auto w-full px-6 pb-8">
-        <div className="h-24 bg-gray-800/30 border border-gray-800 rounded-lg flex items-center justify-center text-gray-600 text-sm">
+        <div className="h-24 bg-gray-800/30 border border-gray-800 rounded-lg flex items-center justify-center text-gray-400 text-sm">
           Ad — 广告位
         </div>
       </div>

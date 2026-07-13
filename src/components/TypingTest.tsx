@@ -319,7 +319,7 @@ export default function TypingTest({ defaultLang = DEFAULT_LANGUAGE }: TypingTes
                 </button>
               ))}
             </div>
-            <p className="text-gray-600 text-sm mt-6">
+            <p className="text-gray-400 text-sm mt-6">
               or press any key to start
             </p>
           </div>
