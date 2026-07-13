@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+html, body {
+  background: #111;
+  color: #e5e7eb;
+}
+
+::selection {
+  background: rgba(251, 191, 36, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+@keyframes blink {
+  0%, 100% { border-color: rgba(251, 191, 36, 0.8); }
+  50% { border-color: transparent; }
+}
