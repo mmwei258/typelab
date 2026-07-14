@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords:
     "typing test, typing speed test, WPM test, free typing test, online typing, typing practice, Hindi typing test, English typing test",
   verification: {
-    google: GSC_VERIFICATION || undefined,
+    google: "googlee92463715fa356bf", // ← meta tag backup
   },
   alternates: {
     canonical: "https://typelab.co/",
